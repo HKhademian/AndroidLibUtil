@@ -1,4 +1,4 @@
-package ir.hossainco.utils
+package ir.hossainco.utils.ui
 
 sealed class TextSize(val value: Float) {
 	class CustomTextSize(value: Float) : TextSize(value)

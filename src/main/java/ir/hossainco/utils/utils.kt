@@ -12,3 +12,13 @@ inline fun <T> tryOrNull(crossinline action: () -> T) = try {
 	null
 }
 
+inline fun <T, R> Iterable<T>.tryMap(transform: (T) -> R): List<R?> {
+	return map {
+		try {
+			transform(it)
+		} catch (_: Throwable) {
+			null
+		}
+	}
+}
+

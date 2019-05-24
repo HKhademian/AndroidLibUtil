@@ -1,7 +1,8 @@
-package ir.hossainco.utils
+package ir.hossainco.utils.ui
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import ir.hossainco.utils.ui.drawables.createRoundRectPath
 
 /**
  * Half Button drawables
@@ -41,11 +42,11 @@ class HalfButtonGradientDrawable(
 
 		if (flip) {
 			/* solid */
-			val solidPath = Drawables.createRoundRectPath(left, top, right, cy, corner, corner, 0f, 0f)
+			val solidPath = createRoundRectPath(left, top, right, cy, corner, corner, 0f, 0f)
 			canvas.drawPath(solidPath, solidPaint)
 			/* gradient */
 			gradientPaint.shader = LinearGradient(0f, 0f, 0f, cy, colorStart, colorEnd, Shader.TileMode.MIRROR)
-			val gradientPath = Drawables.createRoundRectPath(left, cy, right, bottom, 0f, 0f, corner, corner)
+			val gradientPath = createRoundRectPath(left, cy, right, bottom, 0f, 0f, corner, corner)
 			canvas.drawPath(gradientPath, gradientPaint)
 			/* middleSolid */
 			canvas.drawRect(left, cy, right, cy - middle, middleSolidPaint)
@@ -54,10 +55,10 @@ class HalfButtonGradientDrawable(
 		} else {
 			/* gradient */
 			gradientPaint.shader = LinearGradient(0f, 0f, 0f, cy, colorStart, colorEnd, Shader.TileMode.MIRROR)
-			val gradientPath = Drawables.createRoundRectPath(left, top, right, cy, corner, corner, 0f, 0f)
+			val gradientPath = createRoundRectPath(left, top, right, cy, corner, corner, 0f, 0f)
 			canvas.drawPath(gradientPath, gradientPaint)
 			/* solid */
-			val solidPath = Drawables.createRoundRectPath(left, cy, right, bottom, 0f, 0f, corner, corner)
+			val solidPath = createRoundRectPath(left, cy, right, bottom, 0f, 0f, corner, corner)
 			canvas.drawPath(solidPath, solidPaint)
 			/* middleGradient */
 			canvas.drawRect(left, cy - middle, right, cy, middleGradientPaint)

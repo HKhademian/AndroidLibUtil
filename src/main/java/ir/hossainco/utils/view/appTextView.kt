@@ -1,4 +1,4 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
 import android.graphics.Typeface
 import android.view.Gravity
@@ -8,7 +8,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import ir.hossainco.utils.TextSize
+import ir.hossainco.utils.ui.TextSize
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 

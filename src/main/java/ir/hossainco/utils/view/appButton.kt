@@ -1,4 +1,4 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -8,9 +8,9 @@ import android.view.ViewManager
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import ir.hossainco.utils.Drawables
-import ir.hossainco.utils.HalfButtonGradientDrawable
-import ir.hossainco.utils.TextSize
+import ir.hossainco.utils.ui.HalfButtonGradientDrawable
+import ir.hossainco.utils.ui.TextSize
+import ir.hossainco.utils.ui.drawables.createButton
 import org.jetbrains.anko.button
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.textColor
@@ -73,7 +73,7 @@ private fun createOliveButtonDrawable() =
 //	createButtonDrawable(0xFFbd7f80.toInt(), 0xFF9e4040.toInt(), 0xFF942c2c.toInt(), 0xFF861010.toInt(), 0xFF7e0001.toInt())
 
 private fun createButtonDrawable(colorStart: Int, colorEnd: Int, colorMidGrad: Int, colorMidSol: Int, colorSol: Int) =
-	Drawables.createButton(
+	createButton(
 		HalfButtonGradientDrawable(
 			false, 8f, 4f, 4f,
 			colorStart, colorEnd, colorMidGrad, colorMidSol, colorSol

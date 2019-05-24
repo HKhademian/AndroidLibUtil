@@ -1,4 +1,4 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
 import android.graphics.drawable.Drawable
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import ir.hossainco.utils.Drawables
+import ir.hossainco.utils.ui.drawables.createRectGradientButton
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.imageView
 import org.jetbrains.anko.padding
@@ -35,7 +35,7 @@ fun ViewManager.toolbarItem(
 	else if (image != null)
 		setImageDrawable(image)
 
-	background = Drawables.createRectGradientButton(0, 0, 0x33aaaaaa.toInt(), 0, 0, 0)
+	background = createRectGradientButton(0, 0, 0x33aaaaaa.toInt(), 0, 0, 0)
 	padding = dip(8)
 	layoutParams = LinearLayout.LayoutParams(dip(48), MATCH_PARENT)
 

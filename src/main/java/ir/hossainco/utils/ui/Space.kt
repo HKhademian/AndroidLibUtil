@@ -1,4 +1,4 @@
-package ir.hossainco.utils
+package ir.hossainco.utils.ui
 
 sealed class Space(val value: Float) {
 	class CustomSpace(value: Float) : Space(value)

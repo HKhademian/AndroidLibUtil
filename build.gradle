@@ -25,4 +25,13 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 	// implementation Deps.coroutines
 	implementation Deps.anko_sdk27
+
+	implementation Deps.core_ktx
+	implementation Deps.fragment
+	implementation Deps.fragment_ktx
+	implementation Deps.recyclerview
+
+	implementation Deps.lifecycle_extensions
+	implementation Deps.lifecycle_viewmodel_ktx
+	kapt Deps.lifecycle_compiler
 }

@@ -1,4 +1,4 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,9 +9,9 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewManager
 import android.widget.LinearLayout
 import androidx.annotation.IdRes
-import ir.hossainco.utils.Drawables
 import ir.hossainco.utils.R
-import ir.hossainco.utils.TextSize
+import ir.hossainco.utils.ui.TextSize
+import ir.hossainco.utils.ui.drawables.createRect3D
 import org.jetbrains.anko.*
 
 @SuppressLint("RtlHardcoded")
@@ -84,7 +84,7 @@ fun ViewManager.toolbar(
 //	}
 
 fun toolbarBackground(frontColor: Int = 0xFF113311.toInt(), backColor: Int = 0xFF119911.toInt()) =
-	Drawables.createRect3D(
+	createRect3D(
 		frontColor, backColor, 0,
 		0f, 0f, 0f, 2f
 	)

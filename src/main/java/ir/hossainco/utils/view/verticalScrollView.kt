@@ -1,6 +1,5 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
-import android.view.Gravity
 import android.view.Gravity.START
 import android.view.Gravity.TOP
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT

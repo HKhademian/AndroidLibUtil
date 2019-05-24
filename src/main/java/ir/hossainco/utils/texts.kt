@@ -1,4 +1,6 @@
-package ir.hossainco.utils
+@file:Suppress("PackageDirectoryMismatch")
+
+package ir.hossainco.utils.texts
 
 fun String.persianizeLatinNumbers() = this
 	.replace("0", "۰")

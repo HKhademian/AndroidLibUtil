@@ -1,4 +1,4 @@
-package ir.hossainco.utils.views
+package ir.hossainco.utils.view
 
 import android.content.Context
 import android.graphics.Canvas

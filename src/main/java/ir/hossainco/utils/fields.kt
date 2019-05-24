@@ -1,6 +1,7 @@
 @file:JvmName("Fields")
+@file:Suppress("PackageDirectoryMismatch")
 
-package ir.hossainco.utils
+package ir.hossainco.utils.fields
 
 import java.lang.reflect.Field
 
