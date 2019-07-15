@@ -1,0 +1,3 @@
+# -flattenpackagehierarchy ''
+-repackageclasses ''
+-allowaccessmodification
