@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package ir.hossainco.utils.arch
 
 import android.util.Log

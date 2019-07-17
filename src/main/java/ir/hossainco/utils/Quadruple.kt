@@ -1,3 +1,5 @@
+@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
+
 package ir.hossainco.utils
 
 typealias Quadruple<A, B, C, D> = Pair<Pair<A, B>, Pair<C, D>>

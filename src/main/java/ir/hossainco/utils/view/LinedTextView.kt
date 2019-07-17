@@ -1,5 +1,6 @@
 package ir.hossainco.utils.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,12 +9,14 @@ import android.graphics.Rect
 import android.widget.TextView
 
 /** source: https://stackoverflow.com/questions/10754265/androiddraw-line-on-a-textview/10770670#10770670 */
+@SuppressLint("ViewConstructor")
 class LinedTextView(context: Context, lineColor: Int? = null, lineColorRes: Int? = null) : TextView(context) {
 	private val rect = Rect()
 	private val paint = Paint()
 
 	init {
 		paint.style = Paint.Style.STROKE
+		@Suppress("DEPRECATION")
 		paint.color = when {
 			lineColor != null -> lineColor
 			lineColorRes != null -> context.resources.getColor(lineColorRes)

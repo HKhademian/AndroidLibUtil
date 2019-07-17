@@ -1,4 +1,5 @@
 @file:JvmName("EventUtils")
+@file:Suppress("NOTHING_TO_INLINE")
 
 package ir.hossainco.utils.event
 
