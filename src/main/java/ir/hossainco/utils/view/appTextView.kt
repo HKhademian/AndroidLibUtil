@@ -20,6 +20,7 @@ inline fun ViewManager.appTextView(
 
 	dark: Boolean = true,
 
+	notebookLine: Boolean = false,
 	@ColorInt notebookLineColor: Int? = null,
 	@ColorRes notebookLineColorRes: Int? = null,
 
@@ -27,7 +28,7 @@ inline fun ViewManager.appTextView(
 	init: TextView.() -> Unit = {}
 ): TextView {
 	val view = when {
-		notebookLineColor != null -> ankoView({ ctx ->
+		notebookLine && (notebookLineColor != null || notebookLineColorRes != null) -> ankoView({ ctx ->
 			LinedTextView(
 				ctx,
 				lineColor = notebookLineColor,

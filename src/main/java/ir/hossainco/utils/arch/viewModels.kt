@@ -28,6 +28,7 @@ inline fun <reified T : ViewModel> FragmentActivity.viewModel(noinline factory: 
 	ViewModelProviders.of(this, factory(factory))[T::class.java]
 
 /* custom factory */
+@Suppress("UNCHECKED_CAST")
 fun <T : ViewModel> factory(factory: () -> T) =
 	object : ViewModelProvider.Factory {
 		override fun <T : ViewModel> create(modelClass: Class<T>): T = factory() as T
