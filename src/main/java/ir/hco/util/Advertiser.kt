@@ -12,21 +12,22 @@ interface Advertiser {
 		const val UNIT_DEFAULT = "default"
 		const val UNIT_BANNER = "banner"
 		const val UNIT_CONTENT = "content"
+
 		val DEFAULT = object : Advertiser {
-			override var lastInterstitialAdShown = System.currentTimeMillis()
+			override var lastFullAdShown = System.currentTimeMillis()
 		}
 
-		protected fun mayShowInterstitial(
+		protected fun mayShowFull(
 			activity: Activity,
 			lastAdShown: Long = 0,
 			minAdGap: Long = MIN_AD_GAP,
-			hasInterstitial: (Activity) -> Boolean,
-			showInterstitial: (Activity) -> Boolean
+			hasFull: (Activity) -> Boolean,
+			showFull: (Activity) -> Boolean
 		): Long? {
 			val now = System.currentTimeMillis()
 			if (now - lastAdShown > minAdGap && (Math.random() * 100) < 30) {
-				if (hasInterstitial(activity)) {
-					val res = showInterstitial(activity)
+				if (hasFull(activity)) {
+					val res = showFull(activity)
 					if (res) {
 						return System.currentTimeMillis()
 					}
@@ -38,7 +39,7 @@ interface Advertiser {
 	}
 
 	val minAdGap: Long get() = MIN_AD_GAP
-	var lastInterstitialAdShown: Long
+	var lastFullAdShown: Long
 
 
 	fun init(context: Context) =
@@ -57,22 +58,22 @@ interface Advertiser {
 		Unit
 
 
-	fun hasInterstitial(activity: Activity): Boolean =
+	fun hasFull(activity: Activity): Boolean =
 		false
 
-	fun showInterstitial(activity: Activity): Boolean =
+	fun showFull(activity: Activity): Boolean =
 		false
 
-	fun mayShowInterstitial(activity: Activity): Boolean {
-		val res = mayShowInterstitial(
+	fun mayShowFull(activity: Activity): Boolean {
+		val res = mayShowFull(
 			activity,
-			lastInterstitialAdShown,
+			lastFullAdShown,
 			minAdGap,
-			::hasInterstitial,
-			::showInterstitial
+			::hasFull,
+			::showFull
 		)
 			?: return false
-		lastInterstitialAdShown = res
+		lastFullAdShown = res
 		return true
 	}
 }
