@@ -20,6 +20,7 @@ import android.os.Build
 import android.os.Process.killProcess
 import android.os.Process.myPid
 import android.view.View.LAYOUT_DIRECTION_LOCALE
+import ir.hossainco.utils.tryOrNull
 import java.io.File
 import java.util.*
 
@@ -151,3 +152,9 @@ fun Intent.startNewTask(context: Context) = try {
 	context.startActivity(this)
 } catch (ignored: Throwable) {
 }
+
+fun isPackageExisted(context: Context, targetPackage: String) =
+	context.packageManager?.let { pm ->
+		val info = tryOrNull { pm.getPackageInfo(targetPackage, PackageManager.GET_META_DATA) }
+		info != null
+	} ?: false
