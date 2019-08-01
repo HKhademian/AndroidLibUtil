@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">HossainCo</string>
+	<string name="app_title">@string/app_name</string>
+	<string name="app_subtitle">مجموعه ای از زیبا ترین  برنامه های فارسی</string>
+
+	<string name="item_share">اشتراک گذاری</string>
+	<string name="item_copy">کپی</string>
+	<string name="item_bookmark">علامتگذاری</string>
+	<string name="item_rate">رای به برنامه</string>
+	<string name="item_apps">دیگر برنامه ها</string>
+
+	<string name="title_chooser">انتخاب کنید …</string>
+	<string name="title_share_chooser">اشتراک گذاری در …</string>
+
+	<string name="action_copy_done">متن پیام کپی شد</string>
+	<string name="drawer_open">باز</string>
+	<string name="drawer_close">بسته</string>
+	<string name="ads">تبلیغات</string>
+</resources>

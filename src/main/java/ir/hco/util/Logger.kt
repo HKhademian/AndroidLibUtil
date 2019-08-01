@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package ir.hco.utils
+package ir.hco.util
 
 import android.content.Context
 import android.content.Intent

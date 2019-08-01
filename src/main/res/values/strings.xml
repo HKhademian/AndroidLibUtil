@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">HossainCo</string>
+	<string name="app_title">@string/app_name</string>
+	<string name="app_subtitle">Collection of well designed apps</string>
+
+	<string name="item_share">Share</string>
+	<string name="item_copy">Copy</string>
+	<string name="item_bookmark">BookMark</string>
+	<string name="item_rate">Rate</string>
+	<string name="item_apps">Apps</string>
+
+	<string name="title_chooser">Choose …</string>
+	<string name="title_share_chooser">Choose to Share …</string>
+
+	<string name="action_copy_done">Copy is done</string>
+	<string name="drawer_open">Open</string>
+	<string name="drawer_close">Close</string>
+	<string name="ads">Advertise</string>
+</resources>

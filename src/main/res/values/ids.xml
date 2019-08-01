@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<item name="drawer" type="id"/>
 	<item name="toolbar" type="id"/>
+	<item name="header" type="id"/>
+	<item name="fragment" type="id"/>
+	<item name="footer" type="id"/>
+	<item name="side" type="id"/>
+
+	<item name="recycler" type="id"/>
+
+	<item name="button" type="id"/>
+	<item name="avatar" type="id"/>
+	<item name="title" type="id"/>
+	<item name="subtitle" type="id"/>
+	<item name="content" type="id"/>
+	<item name="text" type="id"/>
+	<item name="index" type="id"/>
+	<item name="bookmark" type="id"/>
+
+	<item name="ad" type="id"/>
+	<item name="ad_icon" type="id"/>
+	<item name="ad_title" type="id"/>
 </resources>

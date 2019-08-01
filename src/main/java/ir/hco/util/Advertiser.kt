@@ -1,4 +1,4 @@
-package ir.hco.utils
+package ir.hco.util
 
 import android.app.Activity
 import android.content.Context

@@ -7,13 +7,13 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewManager
 import android.widget.LinearLayout
 import androidx.annotation.IdRes
-import ir.hossainco.utils.R
+import ir.hco.util.R
 import ir.hossainco.utils.ui.drawables.createRect3D
 import org.jetbrains.anko._LinearLayout
 import org.jetbrains.anko.linearLayout
 
 @SuppressLint("RtlHardcoded")
-fun ViewManager.bottomBar(
+fun ViewManager.simpleBottomBar(
 	@IdRes id: Int? = R.id.toolbar,
 	init: _LinearLayout.() -> Unit = {}
 ) = linearLayout {
@@ -22,12 +22,12 @@ fun ViewManager.bottomBar(
 	}
 	gravity = CENTER
 	layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-	background = bottomBarBackground()
+	background = simpleBottomBarBackground()
 
 	init()
 }
 
-fun bottomBarBackground(frontColor: Int = 0xFF113311.toInt(), backColor: Int = 0xFF119911.toInt()) =
+fun simpleBottomBarBackground(frontColor: Int = 0xFF113311.toInt(), backColor: Int = 0xFF119911.toInt()) =
 	createRect3D(
 		frontColor, backColor, 0,
 		0f, 0f, 0f, -2f

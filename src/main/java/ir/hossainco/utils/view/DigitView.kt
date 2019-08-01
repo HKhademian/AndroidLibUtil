@@ -2,7 +2,7 @@ package ir.hossainco.utils.view
 
 import android.view.ViewManager
 import android.widget.ImageView
-import ir.hossainco.utils.R
+import ir.hco.util.R
 import ir.hossainco.utils.ui.anims.animatedChange
 import org.jetbrains.anko.imageView
 
@@ -20,6 +20,7 @@ fun ViewManager.digit(
 	init()
 }
 
+@Suppress("EXPERIMENTAL_FEATURE_WARNING")
 inline class DigitView(val view: ImageView) {
 	companion object {
 		val DIGITS = mutableListOf<Int>(

@@ -20,14 +20,13 @@ import android.provider.MediaStore
 import android.view.View
 import android.view.View.MeasureSpec.makeMeasureSpec
 import android.widget.TextView
-import ir.hossainco.utils.App.app
-import ir.hossainco.utils.App.context
-import ir.hossainco.utils.App.res
+import ir.hco.util.BaseApp.Companion.res
+import ir.hco.util.BaseApp.Companion.context
 import java.lang.Math.*
 import kotlin.math.roundToInt
 
-fun dp2px(dp: Float) = (dp * app.resources.displayMetrics.density).roundToInt()
-fun sp2px(sp: Float) = (sp * app.resources.displayMetrics.scaledDensity).roundToInt()
+fun dp2px(dp: Float) = (dp * res.displayMetrics.density).roundToInt()
+fun sp2px(sp: Float) = (sp * res.displayMetrics.scaledDensity).roundToInt()
 
 
 fun createScaleBitmap(bitmap: Bitmap, fit: Boolean, width: Int, height: Int, filter: Boolean) = try {

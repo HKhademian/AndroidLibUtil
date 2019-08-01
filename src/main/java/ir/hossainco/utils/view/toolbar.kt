@@ -9,13 +9,13 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewManager
 import android.widget.LinearLayout
 import androidx.annotation.IdRes
-import ir.hossainco.utils.R
+import ir.hco.util.R
 import ir.hossainco.utils.ui.TextSize
 import ir.hossainco.utils.ui.drawables.createRect3D
 import org.jetbrains.anko.*
 
 @SuppressLint("RtlHardcoded")
-fun ViewManager.toolbar(
+fun ViewManager.simpleToolbar(
 	@IdRes id: Int? = R.id.toolbar,
 
 	init: _LinearLayout.() -> Unit = {}
@@ -26,7 +26,7 @@ fun ViewManager.toolbar(
 		}
 		gravity = CENTER
 		layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-		background = toolbarBackground()
+		background = simpleToolbarBackground()
 
 		init()
 
@@ -42,7 +42,7 @@ fun ViewManager.toolbar(
 		}.lparams(width = dip(56), height = dip(56))
 	}
 
-//fun ViewManager.toolbar(init: LinearLayout.() -> Unit = {}) =
+//fun ViewManager.simpleToolbar(init: _LinearLayout.() -> Unit = {}) =
 //	linearLayout {
 //		id = R.id.toolbar
 //		gravity = CENTER
@@ -83,20 +83,20 @@ fun ViewManager.toolbar(
 //		init()
 //	}
 
-fun toolbarBackground(frontColor: Int = 0xFF113311.toInt(), backColor: Int = 0xFF119911.toInt()) =
+fun simpleToolbarBackground(frontColor: Int = 0xFF113311.toInt(), backColor: Int = 0xFF119911.toInt()) =
 	createRect3D(
 		frontColor, backColor, 0,
 		0f, 0f, 0f, 2f
 	)
 
-//fun toolbarWineBackground() =
-//	toolbarBackground(0xFF991111.toInt(), 0xFF661111.toInt())
+//fun simpleToolbarWineBackground() =
+//	simpleToolbarBackground(0xFF991111.toInt(), 0xFF661111.toInt())
 //
-//fun toolbarOliveBackground() =
-//	toolbarBackground(0xFF113311.toInt(), 0xFF119911.toInt())
+//fun simpleToolbarOliveBackground() =
+//	simpleToolbarBackground(0xFF113311.toInt(), 0xFF119911.toInt())
 //
-//fun toolbarSoilBackground() =
-//	toolbarBackground(0xFF991111.toInt(), 0xFF661111.toInt())
+//fun simpleToolbarSoilBackground() =
+//	simpleToolbarBackground(0xFF991111.toInt(), 0xFF661111.toInt())
 
 fun setMenuItemEnabled(view: View?, enabled: Boolean) = view?.apply {
 	isEnabled = enabled
