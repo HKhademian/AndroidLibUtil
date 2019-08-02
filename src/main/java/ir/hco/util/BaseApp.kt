@@ -3,14 +3,17 @@
 package ir.hco.util
 
 import android.app.Application
+import android.content.res.Configuration
 import android.graphics.Typeface
+import android.os.Build
+import android.os.LocaleList
 import ir.hossainco.utils.packages.setLocale
 import ir.hossainco.utils.tryOrDefault
 import ir.hossainco.utils.ui.setDefaultTypefaces
 import java.util.*
 
 open class BaseApp(
-	private val locale: Locale = LOCALE_FA
+	val locale: Locale = LOCALE_FA
 ) : Application() {
 	companion object {
 		private val LOCALE_FA = Locale("fa")
@@ -80,6 +83,20 @@ open class BaseApp(
 			serif = serif,
 			monospace = serif
 		)
+	}
+
+	override fun onConfigurationChanged(newConfig: Configuration?) {
+		when {
+			Build.VERSION.SDK_INT >= 24 -> newConfig?.locales = LocaleList(locale)
+			Build.VERSION.SDK_INT >= 17 -> newConfig?.setLocale(locale)
+		}
+		newConfig?.locale = locale
+		super.onConfigurationChanged(newConfig)
+		when {
+			Build.VERSION.SDK_INT >= 24 -> newConfig?.locales = LocaleList(locale)
+			Build.VERSION.SDK_INT >= 17 -> newConfig?.setLocale(locale)
+		}
+		newConfig?.locale = locale
 	}
 
 }

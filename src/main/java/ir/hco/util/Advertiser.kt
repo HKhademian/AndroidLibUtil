@@ -8,7 +8,7 @@ import org.jetbrains.anko.frameLayout
 
 interface Advertiser {
 	companion object {
-		private const val MIN_AD_GAP = 2 * 60 * 1000L
+		const val MIN_AD_GAP = 2 * 60 * 1000L
 		const val UNIT_DEFAULT = "default"
 		const val UNIT_BANNER = "banner"
 		const val UNIT_CONTENT = "content"
