@@ -17,8 +17,10 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
+import android.os.LocaleList
 import android.os.Process.killProcess
 import android.os.Process.myPid
+import android.view.ContextThemeWrapper
 import android.view.View.LAYOUT_DIRECTION_LOCALE
 import ir.hossainco.utils.tryOrNull
 import java.io.File
@@ -84,6 +86,10 @@ fun setLocale(context: Context, locale: Locale) = try {
 
 	val config = context.resources.configuration ?: Configuration()
 	config.locale = locale
+	when {
+		Build.VERSION.SDK_INT >= 24 -> config.locales = LocaleList(locale)
+		Build.VERSION.SDK_INT >= 17 -> config.setLocale(locale)
+	}
 
 	try {
 		context.resources.updateConfiguration(config, context.resources.displayMetrics)
@@ -101,6 +107,11 @@ fun setLocale(context: Context, locale: Locale) = try {
 		val baseCtx = context.baseContext
 		if (context != baseCtx)
 			baseCtx.resources.updateConfiguration(config, baseCtx.resources.displayMetrics)
+	} catch (_: Throwable) {
+	}
+
+	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && context is ContextThemeWrapper) try {
+		context.applyOverrideConfiguration(config)
 	} catch (_: Throwable) {
 	}
 

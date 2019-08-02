@@ -11,6 +11,7 @@
 
 	<item name="button" type="id"/>
 	<item name="avatar" type="id"/>
+	<item name="image" type="id"/>
 	<item name="title" type="id"/>
 	<item name="subtitle" type="id"/>
 	<item name="content" type="id"/>
