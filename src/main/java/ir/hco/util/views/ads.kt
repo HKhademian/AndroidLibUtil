@@ -1,8 +1,8 @@
 package ir.hco.util.views
 
-import android.view.Gravity
+import android.view.Gravity.CENTER
 import android.view.View
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewManager
 import ir.hco.util.BaseApp
 import ir.hco.util.R
@@ -28,10 +28,10 @@ fun ViewManager.ads(
 		minimumHeight = dip(48)
 
 		appTextView(textRes = R.string.ads, dark = false)
-			.lparams(gravity = Gravity.CENTER)
+			.lparams(gravity = CENTER)
 
 		val adPlace = frameLayout()
-			.lparams(width = WRAP_CONTENT, height = WRAP_CONTENT, gravity = Gravity.CENTER)
+			.lparams(width = MATCH_PARENT, height = MATCH_PARENT, gravity = CENTER)
 
 		var lastAd: View? = null
 		fun refreshAd() {

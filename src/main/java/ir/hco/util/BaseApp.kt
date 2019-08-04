@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.graphics.Typeface
 import android.os.Build
 import android.os.LocaleList
+import ir.hco.util.ads.Advertiser
 import ir.hossainco.utils.packages.setLocale
 import ir.hossainco.utils.tryOrDefault
 import ir.hossainco.utils.ui.setDefaultTypefaces

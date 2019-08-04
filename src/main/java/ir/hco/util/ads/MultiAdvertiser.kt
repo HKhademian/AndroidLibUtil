@@ -1,10 +1,9 @@
-package ir.hco.util
+package ir.hco.util.ads
 
 import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewManager
-import ir.hossainco.utils.tryOrNull
 
 class MultiAdvertiser(
 	override val minAdGap: Long = Advertiser.MIN_AD_GAP,
@@ -57,49 +56,6 @@ class MultiAdvertiser(
 		view.tag = bannerData.data
 		advertiser.recycleBanner(view)
 	}
-}
-
-interface AdvertiserSelector {
-	fun selectAdvertiser(
-		advertisers: List<MultiAdvertiserData>,
-		condition: (MultiAdvertiserData) -> Boolean
-	): MultiAdvertiserData? =
-		null
-}
-
-object RandomAdvertiserSelector : AdvertiserSelector {
-	override fun selectAdvertiser(advertisers: List<MultiAdvertiserData>, condition: (MultiAdvertiserData) -> Boolean) =
-		tryOrNull {
-			advertisers.filter(condition).random()
-		}
-}
-
-interface MultiAdvertiserData {
-	val advertiser: Advertiser
-
-	fun hasMultiBanner(unitName: String?): Boolean
-	fun getMultiBannerFillRate(unitName: String?): Float
-
-	fun hasMultiFull(activity: Activity): Boolean
-	fun getMultiFullFillRate(activity: Activity): Float
-}
-
-open class SimpleMultiAdvertiserData(
-	override val advertiser: Advertiser,
-	val bannerFillRate: Float = 1f,
-	val fullFillRate: Float = 1f
-) : MultiAdvertiserData {
-	override fun hasMultiBanner(unitName: String?) =
-		bannerFillRate > 0
-
-	override fun getMultiBannerFillRate(unitName: String?) =
-		bannerFillRate
-
-	override fun hasMultiFull(activity: Activity) =
-		fullFillRate > 0
-
-	override fun getMultiFullFillRate(activity: Activity) =
-		fullFillRate
 }
 
 private class BannerData(

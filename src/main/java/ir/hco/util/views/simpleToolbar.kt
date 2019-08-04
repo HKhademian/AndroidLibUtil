@@ -200,7 +200,7 @@ open class SimpleToolbar(
 		listener: (MenuItem) -> Boolean
 	): Menu {
 		actionView.removeAllViews()
-		menu.children.forEach {
+		menu.children.toList().asReversed().forEach {
 			action(id = it.itemId, hint = StringSource.of(it.title), icon = DrawableSource.of(it.icon)) { _ ->
 				listener(it)
 			}.apply {

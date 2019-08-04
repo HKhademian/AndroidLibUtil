@@ -1,4 +1,4 @@
-package ir.hco.util
+package ir.hco.util.ads
 
 import android.app.Activity
 import android.content.Context
@@ -77,3 +77,5 @@ interface Advertiser {
 		return true
 	}
 }
+
+open class AdvertiserWrapper(val baseAdvertiser: Advertiser) : Advertiser by baseAdvertiser
