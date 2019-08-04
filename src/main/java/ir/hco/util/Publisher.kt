@@ -84,7 +84,7 @@ open class BazaarPublisher(
 }
 
 open class MyketPublisher(
-private val developerId: String
+	private val developerId: String
 ) : Publisher {
 	override fun isPublisherAvailable(context: Context) =
 		isPackageExisted(context, PUBLISHER_PACKAGE)
@@ -92,10 +92,10 @@ private val developerId: String
 	override fun createDeveloperPageIntent(context: Context, developerId: String?, forceApp: Boolean): Intent {
 		val isPublisherAvailable = isPublisherAvailable(context)
 
-		val link = if (!isPublisherAvailable)
+		val link = if (!isPublisherAvailable || (!developerId.isNullOrEmpty() || !this.developerId.isEmpty()))
 			"https://myket.ir/developer/${developerId ?: this.developerId}/apps"
 		else
-			"myket://developer/${developerId ?: context.packageName}"
+			"myket://developer/${context.packageName}"
 
 		return Intent(Intent.ACTION_VIEW).apply {
 			data = Uri.parse(link)

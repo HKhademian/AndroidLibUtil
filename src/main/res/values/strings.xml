@@ -6,7 +6,10 @@
 
 	<string name="item_share">Share</string>
 	<string name="item_copy">Copy</string>
-	<string name="item_bookmark">BookMark</string>
+	<string name="item_bookmark">Bookmark</string>
+	<string name="item_bookmarks">Bookmarks</string>
+	<string name="item_about_us">About Us</string>
+	<string name="item_settings">Setting</string>
 	<string name="item_rate">Rate</string>
 	<string name="item_apps">Apps</string>
 	<string name="item_references">References</string>
