@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package ir.hossainco.utils.ui
 
 sealed class TextSize(val value: Float) {

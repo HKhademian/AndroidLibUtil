@@ -14,6 +14,8 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.core.content.res.ResourcesCompat
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import ir.hco.util.BaseApp.Companion.context
 
 interface Source
@@ -50,6 +52,7 @@ interface ColorSource : Source {
 }
 
 interface StringSource : Source {
+	fun hasString(context: Context): Boolean
 	fun getString(context: Context, vararg formatArgs: Any): String?
 
 	val string get() = getString(context)
@@ -66,6 +69,9 @@ interface StringSource : Source {
 			of(this)
 
 		fun of(@StringRes resid: Int) = object : StringSource {
+			override fun hasString(context: Context) =
+				true
+
 			override fun getString(context: Context, vararg formatArgs: Any) =
 				if (formatArgs.isNotEmpty())
 					context.resources.getString(resid, *formatArgs)
@@ -73,6 +79,9 @@ interface StringSource : Source {
 		}
 
 		fun of(text: CharSequence?) = object : StringSource {
+			override fun hasString(context: Context) =
+				text != null
+
 			override fun getString(context: Context, vararg formatArgs: Any) =
 				when {
 					text == null -> null
@@ -84,6 +93,7 @@ interface StringSource : Source {
 }
 
 interface DrawableSource : Source {
+	fun hasDrawable(context: Context): Boolean
 	fun getDrawable(context: Context): Drawable?
 
 	val drawable get() = getDrawable(context)
@@ -107,30 +117,42 @@ interface DrawableSource : Source {
 			of(this)
 
 		fun of(bitmap: Bitmap) = object : DrawableSource {
+			override fun hasDrawable(context: Context) =
+				true
+
 			override fun getDrawable(context: Context) =
 				BitmapDrawable(context.resources, bitmap)
 		}
 
 		fun of(drawable: Drawable?) = object : DrawableSource {
+			override fun hasDrawable(context: Context) =
+				drawable != null
+
 			override fun getDrawable(context: Context) =
 				drawable
 		}
 
 		fun of(@DrawableRes resid: Int) = object : DrawableSource {
+			override fun hasDrawable(context: Context) =
+				getDrawable(context) != null
+
 			override fun getDrawable(context: Context) =
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-					context.resources.getDrawable(resid, context.theme)
-				} else {
-					context.resources.getDrawable(resid)
-				}
+				VectorDrawableCompat.create(context.resources, resid, context.theme)
+					?: ResourcesCompat.getDrawable(context.resources, resid, context.theme)
 		}
 
 		fun of(source: ColorSource) = object : DrawableSource {
+			override fun hasDrawable(context: Context) =
+				true
+
 			override fun getDrawable(context: Context) =
 				ColorDrawable(source.getColor(context))
 		}
 
 		fun ofColor(@ColorInt color: Int) = object : DrawableSource {
+			override fun hasDrawable(context: Context) =
+				true
+
 			override fun getDrawable(context: Context) =
 				ColorDrawable(color)
 		}

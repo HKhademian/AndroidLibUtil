@@ -28,10 +28,10 @@ fun ViewManager.ads(
 		minimumHeight = dip(48)
 
 		appTextView(textRes = R.string.ads, dark = false)
-			.lparams(gravity = CENTER)
-
-		val adPlace = frameLayout()
 			.lparams(width = MATCH_PARENT, height = MATCH_PARENT, gravity = CENTER)
+
+		val adPlace = frameLayout {
+		}.lparams(width = MATCH_PARENT, height = MATCH_PARENT, gravity = CENTER)
 
 		var lastAd: View? = null
 		fun refreshAd() {

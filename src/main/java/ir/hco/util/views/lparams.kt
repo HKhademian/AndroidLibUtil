@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package ir.hco.util.views
 
 import android.view.View
@@ -6,8 +8,8 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 
 inline fun <T : View> T.simpleLParams(
-	width: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-	height: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+	width: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
+	height: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
 	init: ViewGroup.LayoutParams.() -> Unit = {}
 ): T {
 	val layoutParams = ViewGroup.LayoutParams(width, height)
@@ -17,8 +19,8 @@ inline fun <T : View> T.simpleLParams(
 }
 
 inline fun <T : View> T.marginLParams(
-	width: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-	height: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+	width: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
+	height: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
 	init: ViewGroup.MarginLayoutParams.() -> Unit = {}
 ): T {
 	val layoutParams = ViewGroup.MarginLayoutParams(width, height)
@@ -28,8 +30,8 @@ inline fun <T : View> T.marginLParams(
 }
 
 inline fun <T : View> T.frameLParams(
-	width: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-	height: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+	width: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
+	height: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
 	init: FrameLayout.LayoutParams.() -> Unit = {}
 ): T {
 	val layoutParams = FrameLayout.LayoutParams(width, height)
@@ -39,8 +41,8 @@ inline fun <T : View> T.frameLParams(
 }
 
 inline fun <T : View> T.linearLParams(
-	width: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-	height: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+	width: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
+	height: Int = ViewGroup.LayoutParams.WRAP_CONTENT,
 	init: LinearLayout.LayoutParams.() -> Unit = {}
 ): T {
 	val layoutParams = LinearLayout.LayoutParams(width, height)

@@ -2,44 +2,71 @@ package ir.hco.util.ads
 
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewManager
 import org.jetbrains.anko.frameLayout
 
 interface Advertiser {
 	companion object {
-		const val MIN_AD_GAP = 2 * 60 * 1000L
+		const val MIN_AD_GAP = 1 * 60 * 1000L
 		const val UNIT_DEFAULT = "default"
 		const val UNIT_BANNER = "banner"
 		const val UNIT_CONTENT = "content"
 
 		val DEFAULT = object : Advertiser {
-			override var lastFullAdShown = System.currentTimeMillis()
+			override var fullLastAdShown = System.currentTimeMillis()
 		}
 
 		protected fun mayShowFull(
 			activity: Activity,
 			lastAdShown: Long = 0,
 			minAdGap: Long = MIN_AD_GAP,
+			fillRate: Float = 0.3f,
 			hasFull: (Activity) -> Boolean,
 			showFull: (Activity) -> Boolean
 		): Long? {
-			val now = System.currentTimeMillis()
-			if (now - lastAdShown > minAdGap && (Math.random() * 100) < 30) {
-				if (hasFull(activity)) {
-					val res = showFull(activity)
-					if (res) {
-						return System.currentTimeMillis()
-					}
-					return null
-				}
+			fun log(msg: String?) {
+				println("Advertiser: $msg")
+				Log.e("Advertiser", msg)
 			}
-			return null
+
+			val now = System.currentTimeMillis()
+			val past = now - lastAdShown
+
+			if (past < minAdGap) {
+				log("Too soon to show full. past: $past & minAdGap: $minAdGap")
+				return null
+			}
+
+			val rnd = Math.random()
+			if (rnd > fillRate) {
+				log("No fillRate chance to show full. fillRate: $fillRate & rnd: $rnd")
+				return null
+			}
+
+			if (!hasFull(activity)) {
+				log("No hasFull to show full")
+				return null
+			}
+
+			val res = showFull(activity)
+			if (!res) {
+				log("not showFull")
+				return null
+			}
+
+			log("full shown")
+			return System.currentTimeMillis()
 		}
 	}
 
-	val minAdGap: Long get() = MIN_AD_GAP
-	var lastFullAdShown: Long
+	val code get() = "ads"
+	val title get() = "Advertiser"
+
+	val fullMinAdGap: Long get() = MIN_AD_GAP
+	val fullFillRate: Float get() = 0.3f
+	var fullLastAdShown: Long
 
 
 	fun init(context: Context) =
@@ -67,13 +94,14 @@ interface Advertiser {
 	fun mayShowFull(activity: Activity): Boolean {
 		val res = mayShowFull(
 			activity,
-			lastFullAdShown,
-			minAdGap,
+			fullLastAdShown,
+			fullMinAdGap,
+			fullFillRate,
 			::hasFull,
 			::showFull
 		)
 			?: return false
-		lastFullAdShown = res
+		fullLastAdShown = res
 		return true
 	}
 }

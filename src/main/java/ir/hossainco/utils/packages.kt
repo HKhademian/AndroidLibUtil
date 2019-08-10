@@ -169,3 +169,11 @@ fun isPackageExisted(context: Context, targetPackage: String) =
 		val info = tryOrNull { pm.getPackageInfo(targetPackage, PackageManager.GET_META_DATA) }
 		info != null
 	} ?: false
+
+fun restartApp(context: Context) {
+	val restartAppIntent = Intent(context, context::class.java)
+	restartAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	context.startActivity(restartAppIntent)
+	(context as Activity).finish()
+	context.overridePendingTransition(0, 0)
+}

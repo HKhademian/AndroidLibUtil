@@ -6,19 +6,22 @@ import android.view.View
 import android.view.ViewManager
 
 class MultiAdvertiser(
-	override val minAdGap: Long = Advertiser.MIN_AD_GAP,
-	override var lastFullAdShown: Long = System.currentTimeMillis(),
+	override val fullMinAdGap: Long = Advertiser.MIN_AD_GAP,
+	override var fullLastAdShown: Long = System.currentTimeMillis(),
+	override var fullFillRate: Float = 0.3f,
 	val selector: AdvertiserSelector = RandomAdvertiserSelector,
 	val advertisers: List<MultiAdvertiserData>
 ) : Advertiser {
 	constructor(
 		minAdGap: Long = Advertiser.MIN_AD_GAP,
 		lastFullAdShown: Long = System.currentTimeMillis(),
+		fullFillRate: Float = 0.3f,
 		selector: AdvertiserSelector = RandomAdvertiserSelector,
 		vararg advertisers: Advertiser
 	) : this(
-		minAdGap = minAdGap,
-		lastFullAdShown = lastFullAdShown,
+		fullMinAdGap = minAdGap,
+		fullLastAdShown = lastFullAdShown,
+		fullFillRate = fullFillRate,
 		selector = selector,
 		advertisers = advertisers.map { it.multi() }
 	)

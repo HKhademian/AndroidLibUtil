@@ -1,10 +1,8 @@
 package ir.hco.util.page
 
 import android.content.Context
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.os.Bundle
+import android.view.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ir.hco.util.BaseApp
@@ -57,6 +55,8 @@ open class BasePage : Fragment() {
 	}
 
 
+	// Handle Options Menu
+
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		activity?.onCreateOptionsMenu(menu)
 	}
@@ -66,6 +66,24 @@ open class BasePage : Fragment() {
 		return activity.onOptionsItemSelected(item)
 	}
 
-	open fun onOptionsMenuCreated(menu: Menu) {
+	protected open fun onOptionsMenuCreated(menu: Menu) {
+	}
+
+
+	// Handle keys
+
+	protected open fun onBackKeyPressed() =
+		false
+
+	protected open fun onKeyPressed(keyCode: Int, event: KeyEvent) =
+		false
+
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		view.isFocusableInTouchMode = true
+		view.requestFocus()
+		view.setOnKeyListener { _, keyCode, event ->
+			((keyCode == KeyEvent.KEYCODE_BACK && onBackKeyPressed()) || onKeyPressed(keyCode, event))
+		}
 	}
 }

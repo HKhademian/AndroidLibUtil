@@ -6,6 +6,9 @@ import android.net.Uri
 import ir.hossainco.utils.packages.isPackageExisted
 
 interface Publisher {
+	val code get() = "publisher"
+	val title get() = "Publisher"
+
 	fun init(context: Context) = Unit
 
 	fun isPublisherAvailable(context: Context): Boolean =
@@ -36,6 +39,9 @@ interface Publisher {
 open class GooglePlayPublisher(
 	private val developerId: String
 ) : Publisher {
+	override val code get() = "googlePlay"
+	override val title get() = "Google Play"
+
 	override fun isPublisherAvailable(context: Context) =
 		isPackageExisted(context, PUBLISHER_PACKAGE)
 
@@ -61,6 +67,8 @@ open class GooglePlayPublisher(
 open class BazaarPublisher(
 	private val developerId: String
 ) : Publisher {
+	override val code get() = "bazaar"
+	override val title get() = "کافه بازار"
 
 	override fun isPublisherAvailable(context: Context) =
 		isPackageExisted(context, PUBLISHER_PACKAGE)
@@ -86,6 +94,9 @@ open class BazaarPublisher(
 open class MyketPublisher(
 	private val developerId: String
 ) : Publisher {
+	override val code get() = "myket"
+	override val title get() = "مایکت"
+
 	override fun isPublisherAvailable(context: Context) =
 		isPackageExisted(context, PUBLISHER_PACKAGE)
 

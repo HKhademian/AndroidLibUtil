@@ -35,6 +35,7 @@ open class BaseApp(
 	open val publisher: Publisher = GooglePlayPublisher
 
 	override fun onCreate() {
+		setLocale(this, locale)
 		super.onCreate()
 		instance = this
 
@@ -93,11 +94,6 @@ open class BaseApp(
 		}
 		newConfig?.locale = locale
 		super.onConfigurationChanged(newConfig)
-		when {
-			Build.VERSION.SDK_INT >= 24 -> newConfig?.locales = LocaleList(locale)
-			Build.VERSION.SDK_INT >= 17 -> newConfig?.setLocale(locale)
-		}
-		newConfig?.locale = locale
 	}
 
 }

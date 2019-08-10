@@ -33,6 +33,7 @@ fun ViewManager.simpleToolbar(
 	edgeColor: ColorSource = ColorSource.of(R.color.primaryDarkColor),
 	textColor: ColorSource = ColorSource.of(R.color.primaryTextColor),
 
+	icon: DrawableSource = DrawableSource.of(R.mipmap.ic_launcher),
 	title: StringSource = StringSource.of(R.string.app_title),
 	subtitle: StringSource = StringSource.of(R.string.app_subtitle),
 
@@ -41,7 +42,7 @@ fun ViewManager.simpleToolbar(
 	@StyleRes theme: Int = 0,
 	init: (@AnkoViewDslMarker SimpleToolbar).() -> Unit = {}
 ) =
-	factory({ SimpleToolbar(it, id, backColor, edgeColor, textColor, title, subtitle, onHomeClick) }, theme, init)
+	factory({ SimpleToolbar(it, id, backColor, edgeColor, textColor, icon, title, subtitle, onHomeClick) }, theme, init)
 
 @SuppressLint("ViewConstructor")
 open class SimpleToolbar(
@@ -52,6 +53,7 @@ open class SimpleToolbar(
 	edgeColor: ColorSource = ColorSource.of(R.color.primaryDarkColor),
 	textColor: ColorSource = ColorSource.of(R.color.primaryTextColor),
 
+	icon: DrawableSource = DrawableSource.of(R.mipmap.ic_launcher),
 	title: StringSource = StringSource.of(R.string.app_title),
 	subtitle: StringSource = StringSource.of(R.string.app_subtitle),
 
@@ -88,14 +90,15 @@ open class SimpleToolbar(
 		background = createRect3D(
 			backColor.getColor(context),
 			edgeColor.getColor(context),
-			0, 0f, 0f, 0f, 2f
+			0, 0f, 0f, 0f, 1f
 		)
 
 		linearLayout {
 			gravity = CENTER
 
-			iconView = imageView(context.applicationInfo.icon) {
+			iconView = imageView {
 				padding = dip(4)
+				icon.setImage(this)
 			}.lparams(width = dip(56), height = dip(56))
 
 			verticalLayout {
@@ -103,7 +106,7 @@ open class SimpleToolbar(
 
 				titleView = appTextView(
 					dark = false,
-					textSize = TextSize.LargeTextSize
+					textSize = TextSize.TitleTextSize
 				) {
 					padding = dip(2)
 					gravity = CENTER_VERTICAL or START

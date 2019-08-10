@@ -2,6 +2,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="ir.hco.util">
 	<application
+		android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_round"
 		android:name="ir.hco.util.BaseApp"
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme"/>

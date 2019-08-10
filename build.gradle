@@ -26,6 +26,7 @@ dependencies {
 	implementation Deps.anko_sdk27
 
 	implementation Deps.core_ktx
+	implementation Deps.vectordrawable
 	implementation Deps.fragment
 	implementation Deps.fragment_ktx
 
